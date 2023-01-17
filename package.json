@@ -2,12 +2,12 @@
   "name": "code-whiteboard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/socket-back.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/socket-back.js",
-    "start": "node src/socket-back.js"
+    "dev": "nodemon .",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",

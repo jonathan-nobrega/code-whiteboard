@@ -5,9 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
   <title>Websockets Whiteboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="index.js" type="module"></script>
+  <script src="socket-front.js" type="module"></script>
 </head>
 
 <body class="p-20 h-screen bg-gray-100">
@@ -15,11 +18,8 @@
     <div class="flex h-full bg-white rounded-lg border-2">
 
       <div id="documents-list" class="w-96 bg-white border-r-2 rounded-l-lg">
-
-        <h1 class="p-10 font-medium text-xl">
-          Whiteboard rooms
-        </h1>
-
+        <h1 class="p-10 font-medium text-xl">Whiteboard rooms</h1>
+        
         <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
           <p class="my-auto">Room 1</p>
         </div>
@@ -30,7 +30,6 @@
           class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-b-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
           <p class="my-auto">Room 3</p>
         </div>
-
       </div>
 
       <div class="flex flex-col w-full h-full bg-gray-800 text-white rounded-r-lg">
@@ -49,9 +48,6 @@
 
     </div>
   </main>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="index.js"></script>
 </body>
 
 </html>

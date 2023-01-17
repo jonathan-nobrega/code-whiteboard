@@ -3,8 +3,6 @@ import { insertDocumentsLinks } from "./index.js";
 const socket = io();
 
 socket.emit("get_documents", (documents) => {
-  console.log('no socket-front')
-  console.log(documents)
   documents.forEach((documento) => {
     insertDocumentsLinks(documento.name);
   });
