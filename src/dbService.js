@@ -1,8 +1,19 @@
 import { docsCollection } from "./dbConnect.js";
 
-function getAllDocuments() {
+export function findDocument(name) {
+  const result = docsCollection.findOne({ name });
+  return result;
+}
+
+export function getAllDocuments() {
   const result = docsCollection.find().toArray();
   return result;
 }
 
-export { getAllDocuments };
+export function updateDocument(name, text) {
+  const result = docsCollection.updateOne(
+    { name },
+    { $set: { text } }
+  );
+  return result;
+}

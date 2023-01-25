@@ -1,27 +1,24 @@
-import { insertDocumentsLinks } from "./index.js";
+import { insertDocumentsLinks, updateTextEditor } from "./index.js";
 
 const socket = io();
 
 socket.emit("get_documents", (documents) => {
+  console.log('hey')
   documents.forEach((documento) => {
     insertDocumentsLinks(documento.name);
   });
 });
 
-// function emitirAdicionarDocumento(nome) {
-//   socket.emit("adicionar_documento", nome);
-// }
+socket.on('update_clients', (updatedText) => {
+  updateTextEditor(updatedText)
+})
 
-// socket.on("adicionar_documento_interface", (nome) => {
-//   inserirLinkDocumento(nome);
-// });
+export const selectDocument = (name) => {
+  socket.emit('select_document', name, (text) => {
+    updateTextEditor(text)
+  })
+}
 
-// socket.on("documento_existente", (nome) => {
-//   alert(`O documento ${nome} já existe!`);
-// });
-
-// socket.on("excluir_documento_sucesso", (nome) => {
-//   removerLinkDocumento(nome);
-// });
-
-// export { emitirAdicionarDocumento };
+export const emitDocumentUpdate = (data) => {
+  socket.emit('update_document', data);
+}

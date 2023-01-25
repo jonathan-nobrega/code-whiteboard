@@ -8,46 +8,42 @@
   <title>Websockets Whiteboard</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="index.js" type="module"></script>
-  <script src="socket-front.js" type="module"></script>
 </head>
 
 <body class="p-20 h-screen bg-gray-100">
-  <main>
-    <div class="flex h-full bg-white rounded-lg border-2">
+  <main id="wraper" class="flex h-full bg-white rounded-lg border-2">
 
-      <div id="documents-list" class="w-96 bg-white border-r-2 rounded-l-lg">
-        <h1 class="p-10 font-medium text-xl">Whiteboard rooms</h1>
-        
-        <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
+    <section class="w-96 bg-white border-r-2 rounded-l-lg">
+      <h1 class="p-10 font-medium text-xl">Whiteboard rooms</h1>
+      <ul id="documents-list">
+        <!-- <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
           <p class="my-auto">Room 1</p>
         </div>
         <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
           <p class="my-auto">Room 2</p>
-        </div>
-        <div
-          class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-b-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
-          <p class="my-auto">Room 3</p>
-        </div>
+        </div>-->
+      </ul>
+    </section>
+
+    <section class="flex flex-col w-full h-full bg-gray-800 text-white rounded-r-lg">
+      <div class="flex p-10 h-auto space-x-2">
+        <div class="rounded-full h-3 w-3 bg-red-500"></div>
+        <div class="rounded-full h-3 w-3 bg-yellow-500"></div>
+        <div class="rounded-full h-3 w-3 bg-green-500"></div>
       </div>
 
-      <div class="flex flex-col w-full h-full bg-gray-800 text-white rounded-r-lg">
-        <div class="flex p-10 h-auto">
-          <div class="rounded-full h-3 w-3 mr-2 bg-red-500"></div>
-          <div class="rounded-full h-3 w-3 mr-2 bg-yellow-500"></div>
-          <div class="rounded-full h-3 w-3 mr-2 bg-green-500"></div>
-        </div>
+      <h1 class="px-10 text-2xl" id="document-name"></h1>
 
-        <h1 class="px-10 text-2xl" id="document-name">document-name</h1>
-
-        <div class="h-full m-10 border-2 border-gray-700 rounded-lg">
-          <textarea type="text" class="p-5 w-full h-full text-white bg-transparent" />
-        </div>
+      <div class="h-full m-10 border-2 border-gray-700 rounded-lg">
+        <textarea id="text-editor" class="p-5 w-full h-full text-white bg-transparent"></textarea>
       </div>
-
-    </div>
+      
+    </section>
   </main>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="index.js" type="module"></script>
+  <script src="socket-front.js" type="module"></script>
 </body>
 
 </html>
