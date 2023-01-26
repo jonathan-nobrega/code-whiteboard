@@ -8,12 +8,14 @@
   <title>Websockets Whiteboard</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 </head>
 
 <body class="p-20 h-screen bg-gray-100">
-  <main id="wraper" class="flex h-full bg-white rounded-lg border-2">
+  <main id="wraper" class="grid grid-cols-4 h-full w-full bg-white rounded-lg border-2">
 
-    <section class="w-96 bg-white border-r-2 rounded-l-lg">
+    <section class="col-span-1 bg-white border-r-2 rounded-l-lg">
       <h1 class="p-10 font-medium text-xl">Whiteboard rooms</h1>
       <ul id="documents-list">
         <!-- <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
@@ -25,25 +27,33 @@
       </ul>
     </section>
 
-    <section class="flex flex-col w-full h-full bg-gray-800 text-white rounded-r-lg">
-      <div class="flex p-10 h-auto space-x-2">
+    <section class="col-span-3 flex flex-col space-y-10 p-10 bg-gray-800 text-white rounded-r-lg">
+      <div class="flex space-x-2">
         <div class="rounded-full h-3 w-3 bg-red-500"></div>
         <div class="rounded-full h-3 w-3 bg-yellow-500"></div>
         <div class="rounded-full h-3 w-3 bg-green-500"></div>
       </div>
 
-      <h1 class="px-10 text-2xl" id="document-name"></h1>
+      <h1 class="text-2xl" id="document-name">asd</h1>
 
-      <div class="h-full m-10 border-2 border-gray-700 rounded-lg">
-        <textarea id="text-editor" class="p-5 w-full h-full text-white bg-transparent"></textarea>
+      <div class="relative h-full w-full border-2 border-gray-700 rounded-lg">
+        <textarea id="text-editor" autocomplete="on" placeholder="Code here..." spellcheck="false"
+          class="absolute overflow-auto top-0 left-0 py-10 px-4 m-0 w-full h-full text-transparent bg-transparent text-base font-mono font-normal z-10 caret-white"
+          oninput="updateTextEditor(this.value)"
+          >
+        </textarea>
+        <pre aria-hidden="true"
+          class="absolute overflow-auto top-0 left-0 m-0 p-0 w-full h-full text-base font-mono font-normal z-0 ">
+          <code class="bg-transparent language-java" id="highlighting-content"></code>
+        </pre>
       </div>
-      
+
     </section>
   </main>
-  
   <script src="/socket.io/socket.io.js"></script>
   <script src="index.js" type="module"></script>
   <script src="socket-front.js" type="module"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </body>
 
 </html>

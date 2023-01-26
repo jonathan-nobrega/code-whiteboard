@@ -3,7 +3,6 @@ import { insertDocumentsLinks, updateTextEditor } from "./index.js";
 const socket = io();
 
 socket.emit("get_documents", (documents) => {
-  console.log('hey')
   documents.forEach((documento) => {
     insertDocumentsLinks(documento.name);
   });

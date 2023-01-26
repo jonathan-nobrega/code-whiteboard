@@ -6,12 +6,28 @@ const pathName = params.get("name");
 const documentName = document.getElementById('document-name');
 const documentsList = document.getElementById('documents-list');
 const textEditor = document.getElementById('text-editor');
+const highlightingContent = document.getElementById('highlighting-content');
 
-documentName.textContent = pathName ? `${pathName} Room` : 'Uknown Room'
+documentName.textContent = pathName ? `${pathName} Room` : 'Uknown Room';
 
-selectDocument(pathName)
+selectDocument(pathName);
+hljs.highlightAll();
 
-textEditor.addEventListener('keyup', () => {
+textEditor.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        // textEditor.focus();
+        textEditor.setRangeText(
+            '    ',
+            textEditor.selectionStart,
+            textEditor.selectionStart,
+            'end'
+        );
+    }
+});
+textEditor.addEventListener('keyup', (e) => {
+    updateTextEditor(textEditor.value);
     emitDocumentUpdate({
         docName: pathName,
         text: textEditor.value
@@ -27,6 +43,9 @@ export function insertDocumentsLinks(name) {
 }
 
 export function updateTextEditor(text) {
-    console.log('ping', text)
-    textEditor.value = text
+    highlightingContent.innerText = text;
+    textEditor.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+    highlightingContent.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+    hljs.highlightAll();
 }
+
