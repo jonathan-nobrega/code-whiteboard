@@ -8,7 +8,7 @@ const documentsList = document.getElementById('documents-list');
 const textEditor = document.getElementById('text-editor');
 const highlightingContent = document.getElementById('highlighting-content');
 
-documentName.textContent = pathName ? `${pathName} Room` : 'Uknown Room';
+documentName.textContent = pathName ? `${pathName} editor` : 'Uknown Room';
 
 switch (pathName) {
     case 'HTML': highlightingContent.setAttribute('class', 'bg-transparent language-html');

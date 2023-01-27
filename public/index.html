@@ -12,46 +12,55 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 </head>
 
-<body class="p-20 h-screen bg-gray-100">
-  <main id="wraper" class="grid grid-cols-4 h-full w-full bg-white rounded-lg border-2">
+<body class="p-10 h-screen bg-gray-100">
+  <main id="wraper" class="flex flex-col h-full bg-white rounded-lg drop-shadow-2xl">
 
-    <section class="col-span-1 bg-white border-r-2 rounded-l-lg">
-      <h1 class="p-10 font-medium text-xl">Whiteboard rooms</h1>
-      <ul id="documents-list">
-        <!-- <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
-          <p class="my-auto">Room 1</p>
+    <header class="h-5 bg-gray-200 rounded-t-lg flex items-center space-x-2 p-5">
+      <div class="rounded-full h-3 w-3 bg-red-500"></div>
+      <div class="rounded-full h-3 w-3 bg-yellow-500"></div>
+      <div class="rounded-full h-3 w-3 bg-green-500"></div>
+    </header>
+    <h1 class="font-light p-10 text-3xl">CodeSketch</h1>
+
+    <div class="grid grid-cols-5 h-full">
+
+      <section class="h-full col-span-1 bg-white rounded-l-2">
+        <ul id="documents-list">
+          <!-- <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
+            <p class="my-auto">Room 1</p>
+          </div>-->
+        </ul>
+      </section>
+
+      <section class=" flex flex-col h-full col-span-2 space-y-10 p-10 bg-gray-800 text-white">
+        <h1 class="text-2xl" id="document-name">Room description</h1>
+
+        <div class="relative h-full w-full border-2 border-gray-700 ">
+          <textarea id="text-editor" autocomplete="on" placeholder="Code here..." spellcheck="false"
+            class="absolute top-0 left-0 py-10 px-4 m-0 h-full w-full text-transparent bg-transparent text-base font-mono font-normal z-10 caret-white"
+            oninput="updateTextEditor(this.value)">
+          </textarea>
+
+          <pre aria-hidden="true"
+            class="absolute top-0 left-0 m-0 p-0 w-full h-full text-base font-mono font-normal z-0 ">
+            <code class="bg-transparent language-java" id="highlighting-content"></code>
+          </pre>
         </div>
-        <div class="py-3 px-10 my-auto h-14 m-auto border-t-2 border-gray-100 hover:bg-gray-100 cursor-pointer">
-          <p class="my-auto">Room 2</p>
-        </div>-->
-      </ul>
-    </section>
+      </section>
 
-    <section class="col-span-3 flex flex-col space-y-10 p-10 bg-gray-800 text-white rounded-r-lg">
-      <div class="flex space-x-2">
-        <div class="rounded-full h-3 w-3 bg-red-500"></div>
-        <div class="rounded-full h-3 w-3 bg-yellow-500"></div>
-        <div class="rounded-full h-3 w-3 bg-green-500"></div>
-      </div>
+      <section class=" flex flex-col h-full col-span-2 space-y-10 p-10 bg-gray-800 text-white">
+        <h1 class="text-2xl" id="document-name">Blackboard</h1>
 
-      <h1 class="text-2xl" id="document-name">asd</h1>
+        <canvas id="canvas" class="h-full w-full border-2 border-gray-700 bg-gray-800 text-white" >Your browser does not support HTML5 canvas</canvas>
+      </section>
 
-      <div class="relative h-full w-full border-2 border-gray-700 rounded-lg">
-        <textarea id="text-editor" autocomplete="on" placeholder="Code here..." spellcheck="false"
-          class="absolute top-0 left-0 py-10 px-4 m-0 w-full h-full text-transparent bg-transparent text-base font-mono font-normal z-10 caret-white"
-          oninput="updateTextEditor(this.value)"
-          >
-        </textarea>
-        <pre aria-hidden="true"
-          class="absolute top-0 left-0 m-0 p-0 w-full h-full text-base font-mono font-normal z-0 ">
-          <code class="bg-transparent language-java" id="highlighting-content"></code>
-        </pre>
-      </div>
+    </div>
 
-    </section>
   </main>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="index.js" type="module"></script>
+  <script src="whiteboard-canva.js"></script>
   <script src="socket-front.js" type="module"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </body>
