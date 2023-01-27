@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Websockets Whiteboard</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 </head>
 
@@ -33,7 +33,7 @@
       </section>
 
       <section class=" flex flex-col h-full col-span-2 space-y-10 p-10 bg-gray-800 text-white">
-        <h1 class="text-2xl" id="document-name">Room description</h1>
+        <h1 class="text-2xl" id="document-name">👾 Code: Unkown</h1>
 
         <div class="relative h-full w-full border-2 border-gray-700 ">
           <textarea id="text-editor" autocomplete="on" placeholder="Code here..." spellcheck="false"
@@ -49,9 +49,10 @@
       </section>
 
       <section class=" flex flex-col h-full col-span-2 space-y-10 p-10 bg-gray-800 text-white">
-        <h1 class="text-2xl" id="document-name">Blackboard</h1>
+        <h1 class="text-2xl" id="document-name">🎨 Sketch canvas</h1>
 
-        <canvas id="canvas" class="h-full w-full border-2 border-gray-700 bg-gray-800 text-white" >Your browser does not support HTML5 canvas</canvas>
+        <canvas id="canvas" class="h-full w-full border-2 border-gray-700 bg-gray-800 text-white cursor-crosshair">Your browser does not
+          support HTML5 canvas</canvas>
       </section>
 
     </div>

@@ -8,7 +8,7 @@ const documentsList = document.getElementById('documents-list');
 const textEditor = document.getElementById('text-editor');
 const highlightingContent = document.getElementById('highlighting-content');
 
-documentName.textContent = pathName ? `${pathName} editor` : 'Uknown Room';
+documentName.textContent = '⌨️ Code editor: ' + (pathName ? pathName : 'JavaScript');
 
 switch (pathName) {
     case 'HTML': highlightingContent.setAttribute('class', 'bg-transparent language-html');
@@ -56,8 +56,11 @@ export function insertDocumentsLinks(name) {
 
 export function updateTextEditor(text) {
     highlightingContent.innerText = text;
-    textEditor.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
-    highlightingContent.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+    if (pathName != 'HTML') {
+        console.log(pathName)
+        textEditor.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+        highlightingContent.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
+    }
     hljs.highlightAll();
 }
 
