@@ -10,14 +10,25 @@ const highlightingContent = document.getElementById('highlighting-content');
 
 documentName.textContent = pathName ? `${pathName} Room` : 'Uknown Room';
 
+switch (pathName) {
+    case 'HTML': highlightingContent.setAttribute('class', 'bg-transparent language-html');
+        break;
+    case 'SQL': highlightingContent.setAttribute('class', 'bg-transparent language-sql');
+        break;
+    case 'typescript': highlightingContent.setAttribute('class', 'bg-transparent language-typescript');
+        break;
+    case 'Python': highlightingContent.setAttribute('class', 'bg-transparent language-python');
+        break;
+    default:
+        highlightingContent.setAttribute('class', 'bg-transparent language-javascript');
+        break;
+}
+
 selectDocument(pathName);
-hljs.highlightAll();
 
 textEditor.addEventListener('keydown', (e) => {
-    console.log(e.key);
     if (e.key === 'Tab') {
         e.preventDefault();
-        // textEditor.focus();
         textEditor.setRangeText(
             '    ',
             textEditor.selectionStart,
@@ -26,6 +37,7 @@ textEditor.addEventListener('keydown', (e) => {
         );
     }
 });
+
 textEditor.addEventListener('keyup', (e) => {
     updateTextEditor(textEditor.value);
     emitDocumentUpdate({
@@ -48,4 +60,6 @@ export function updateTextEditor(text) {
     highlightingContent.innerHTML = text.replace(new RegExp("&", "g"), "&").replace(new RegExp("<", "g"), "<");
     hljs.highlightAll();
 }
+
+hljs.highlightAll();
 

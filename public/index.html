@@ -38,12 +38,12 @@
 
       <div class="relative h-full w-full border-2 border-gray-700 rounded-lg">
         <textarea id="text-editor" autocomplete="on" placeholder="Code here..." spellcheck="false"
-          class="absolute overflow-auto top-0 left-0 py-10 px-4 m-0 w-full h-full text-transparent bg-transparent text-base font-mono font-normal z-10 caret-white"
+          class="absolute top-0 left-0 py-10 px-4 m-0 w-full h-full text-transparent bg-transparent text-base font-mono font-normal z-10 caret-white"
           oninput="updateTextEditor(this.value)"
           >
         </textarea>
         <pre aria-hidden="true"
-          class="absolute overflow-auto top-0 left-0 m-0 p-0 w-full h-full text-base font-mono font-normal z-0 ">
+          class="absolute top-0 left-0 m-0 p-0 w-full h-full text-base font-mono font-normal z-0 ">
           <code class="bg-transparent language-java" id="highlighting-content"></code>
         </pre>
       </div>
