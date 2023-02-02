@@ -1,6 +1,8 @@
 # Code Whiteboard App
 
- A space to share your code and drawings using Websockets with Express:
+ A space to share your code and drawings using Websockets with Express.
+ 
+ <img src="https://github.com/moraesjon/code-whiteboard/blob/main/public/screen-shot.png?raw=true" />
 
 ## Getting started
 
